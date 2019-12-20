@@ -13,7 +13,9 @@ ENV METVIEWER_URL http://www.dtcenter.org/met/users/downloads/MET_releases/METvi
 # Install Extra Packages for Enterprise Linux for Rscript install
 #
 RUN yum -y update \
- && yum -y install epel-release
+ && yum -y install epel-release \
+ && yum -y install 'dnf-command(config-manager)' \
+ && yum config-manager --set-enabled PowerTools
 
 #
 # Install required packages
