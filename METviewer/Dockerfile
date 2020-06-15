@@ -7,7 +7,7 @@ ENV TOMCAT_MINOR_VERSION 5.23
 ENV TOMCAT_MAJOR_VERSION 8
 ENV TOMCAT_VERSION ${TOMCAT_MAJOR_VERSION}.${TOMCAT_MINOR_VERSION}
 
-ENV METVIEWER_URL http://www.dtcenter.org/met/users/downloads/MET_releases/METviewer-${METVIEWER_VERSION}.tar.gz
+ENV METVIEWER_URL http://dtcenter.ucar.edu/met/users/downloads/MET_releases/METviewer-${METVIEWER_VERSION}.tar.gz
 
 #
 # Install Extra Packages for Enterprise Linux for Rscript install
@@ -53,7 +53,7 @@ EXPOSE 8080
 # Download and Deploy METviewer load/batch
 #
 
-RUN  curl -L ${METVIEWER_URL} | tar xzC /tmp \
+RUN  curl -O ${METVIEWER_URL} | tar xzC /tmp \
  && mv /tmp/METviewer/dist/*.war $CATALINA_HOME/webapps/ \
  && mv /tmp/METviewer /METviewer
 
